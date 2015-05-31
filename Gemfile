@@ -51,6 +51,9 @@ gem 'jquery-ui-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+
+  gem 'rename'
+
   # Erd, generator of pdf model about query models in rails
   gem 'rails-erd'
 
