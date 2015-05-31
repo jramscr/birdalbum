@@ -1,4 +1,5 @@
 class BirdsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bird, only: [:show, :edit, :update, :destroy]
 
   # GET /birds

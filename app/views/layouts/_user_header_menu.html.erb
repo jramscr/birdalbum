@@ -1,0 +1,5 @@
+<div class="row">
+  <%= link_to "Mi Perfil", user_path(current_user) %> |
+  <%= link_to "Nueva Fotografía", new_bird_path %> |
+  <%= link_to "Salir", destroy_user_session_path, method: :delete %>|
+</div>

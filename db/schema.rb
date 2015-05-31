@@ -208,8 +208,9 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "username",               default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -220,7 +221,6 @@ ActiveRecord::Schema.define(version: 20150531113640) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
     t.integer  "person_id"
     t.integer  "user_type_id"
   end
@@ -229,7 +229,6 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "zones", force: :cascade do |t|
     t.string   "description"

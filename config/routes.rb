@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :contact_types
   resources :contacts
   resources :people
@@ -17,9 +18,8 @@ Rails.application.routes.draw do
   resources :families
   resources :sub_orders
   resources :orders
-  devise_for :users
   resources :users
-  root 'users#index'
+  root 'birds#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
