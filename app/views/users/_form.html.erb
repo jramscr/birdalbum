@@ -1,0 +1,12 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :username, hint: 'You cannot change your username.' %>
+    <%= f.input :email, hint: 'This field shoul de uniqu' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

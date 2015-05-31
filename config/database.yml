@@ -1,0 +1,25 @@
+# PostgreSQL
+#   gem install PostgreSQL
+#
+#   Ensure the PostgreSQL gem is defined in your Gemfile
+#   gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+
+development:
+  <<: *default
+  database: dalbum_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: dalbum_test
+
+production:
+  <<: *default
+  database: dalbum_production

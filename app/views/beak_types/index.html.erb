@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Beak Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beak_types.each do |beak_type| %>
+      <tr>
+        <td><%= beak_type.name %></td>
+        <td><%= link_to 'Show', beak_type %></td>
+        <td><%= link_to 'Edit', edit_beak_type_path(beak_type) %></td>
+        <td><%= link_to 'Destroy', beak_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Beak type', new_beak_type_path %>

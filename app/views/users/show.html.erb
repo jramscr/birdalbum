@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= User.human_attribute_name(:username) %>: <p><%=  @user.nickname %></p></h3>
+<h3><%= User.human_attribute_name(:email) %>: <p><%= @user.email %></p></h3>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

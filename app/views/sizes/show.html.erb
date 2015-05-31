@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Femalesize:</strong>
+  <%= @size.femaleSize %>
+</p>
+
+<p>
+  <strong>Malesize:</strong>
+  <%= @size.maleSize %>
+</p>
+
+<%= link_to 'Edit', edit_size_path(@size) %> |
+<%= link_to 'Back', sizes_path %>
