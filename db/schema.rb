@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531075728) do
+ActiveRecord::Schema.define(version: 20150531113640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,20 @@ ActiveRecord::Schema.define(version: 20150531075728) do
     t.string   "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "kind_id"
   end
+
+  add_index "birds", ["kind_id"], name: "index_birds_on_kind_id", using: :btree
+
+  create_table "color_by_species", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "color_id"
+    t.integer  "species_id"
+  end
+
+  add_index "color_by_species", ["color_id"], name: "index_color_by_species_on_color_id", using: :btree
+  add_index "color_by_species", ["species_id"], name: "index_color_by_species_on_species_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -36,23 +49,48 @@ ActiveRecord::Schema.define(version: 20150531075728) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string   "value"
+  create_table "contact_by_people", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "person_id"
+    t.integer  "contact_id"
   end
 
-  create_table "families", force: :cascade do |t|
+  add_index "contact_by_people", ["contact_id"], name: "index_contact_by_people_on_contact_id", using: :btree
+  add_index "contact_by_people", ["person_id"], name: "index_contact_by_people_on_person_id", using: :btree
+
+  create_table "contact_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "contact_type_id"
+  end
+
+  add_index "contacts", ["contact_type_id"], name: "index_contacts_on_contact_type_id", using: :btree
+
+  create_table "families", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "sub_order_id"
+  end
+
+  add_index "families", ["sub_order_id"], name: "index_families_on_sub_order_id", using: :btree
 
   create_table "genders", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "family_id"
   end
+
+  add_index "genders", ["family_id"], name: "index_genders_on_family_id", using: :btree
 
   create_table "kinds", force: :cascade do |t|
     t.string   "name"
@@ -64,7 +102,10 @@ ActiveRecord::Schema.define(version: 20150531075728) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "kind_id"
   end
+
+  add_index "orders", ["kind_id"], name: "index_orders_on_kind_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +114,38 @@ ActiveRecord::Schema.define(version: 20150531075728) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "picture_by_beak_types", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "picture_id"
+    t.integer  "beak_type_id"
+  end
+
+  add_index "picture_by_beak_types", ["beak_type_id"], name: "index_picture_by_beak_types_on_beak_type_id", using: :btree
+  add_index "picture_by_beak_types", ["picture_id"], name: "index_picture_by_beak_types_on_picture_id", using: :btree
+
+  create_table "picture_by_bird_by_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "picture_id"
+    t.integer  "user_id"
+    t.integer  "bird_id"
+  end
+
+  add_index "picture_by_bird_by_users", ["bird_id"], name: "index_picture_by_bird_by_users_on_bird_id", using: :btree
+  add_index "picture_by_bird_by_users", ["picture_id"], name: "index_picture_by_bird_by_users_on_picture_id", using: :btree
+  add_index "picture_by_bird_by_users", ["user_id"], name: "index_picture_by_bird_by_users_on_user_id", using: :btree
+
+  create_table "picture_by_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "picture_id"
+    t.integer  "user_id"
+  end
+
+  add_index "picture_by_users", ["picture_id"], name: "index_picture_by_users_on_picture_id", using: :btree
+  add_index "picture_by_users", ["user_id"], name: "index_picture_by_users_on_user_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "url"
@@ -96,15 +169,37 @@ ActiveRecord::Schema.define(version: 20150531075728) do
 
   create_table "species", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "gender_id"
+    t.integer  "beak_type_id"
+    t.integer  "size_id"
+    t.integer  "quantity_egg_id"
+  end
+
+  add_index "species", ["beak_type_id"], name: "index_species_on_beak_type_id", using: :btree
+  add_index "species", ["gender_id"], name: "index_species_on_gender_id", using: :btree
+  add_index "species", ["quantity_egg_id"], name: "index_species_on_quantity_egg_id", using: :btree
+  add_index "species", ["size_id"], name: "index_species_on_size_id", using: :btree
+
+  create_table "species_by_zones", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "zone_id"
+    t.integer  "species_id"
   end
+
+  add_index "species_by_zones", ["species_id"], name: "index_species_by_zones_on_species_id", using: :btree
+  add_index "species_by_zones", ["zone_id"], name: "index_species_by_zones_on_zone_id", using: :btree
 
   create_table "sub_orders", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "order_id"
   end
+
+  add_index "sub_orders", ["order_id"], name: "index_sub_orders_on_order_id", using: :btree
 
   create_table "user_types", force: :cascade do |t|
     t.string   "Name"
@@ -126,10 +221,14 @@ ActiveRecord::Schema.define(version: 20150531075728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.integer  "person_id"
+    t.integer  "user_type_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "zones", force: :cascade do |t|

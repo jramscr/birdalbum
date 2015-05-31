@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contact_types
   resources :contacts
   resources :people
   resources :pictures

@@ -51,6 +51,9 @@ gem 'jquery-ui-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Erd, generator of pdf model about query models in rails
+  gem 'rails-erd'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
