@@ -5,5 +5,10 @@
   <%= @sub_order.name %>
 </p>
 
+<p>
+  <strong>Order:</strong>
+  <%= @sub_order.order.name %>
+</p>
+
 <%= link_to 'Edit', edit_sub_order_path(@sub_order) %> |
 <%= link_to 'Back', sub_orders_path %>

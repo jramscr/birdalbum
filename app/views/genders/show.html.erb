@@ -5,5 +5,10 @@
   <%= @gender.name %>
 </p>
 
+<p>
+  <strong>Family:</strong>
+  <%= @gender.family.name %>
+</p>
+
 <%= link_to 'Edit', edit_gender_path(@gender) %> |
 <%= link_to 'Back', genders_path %>

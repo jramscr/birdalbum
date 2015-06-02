@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Family</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @genders.each do |gender| %>
       <tr>
         <td><%= gender.name %></td>
+        <td><%= gender.family.name %></td>
         <td><%= link_to 'Show', gender %></td>
         <td><%= link_to 'Edit', edit_gender_path(gender) %></td>
         <td><%= link_to 'Destroy', gender, method: :delete, data: { confirm: 'Are you sure?' } %></td>

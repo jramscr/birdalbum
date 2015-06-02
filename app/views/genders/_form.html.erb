@@ -3,6 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%= f.input :family_id, collection: Family.all.map { |family| [family.name, family.id] }  %>
   </div>
 
   <div class="form-actions">

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Order</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @sub_orders.each do |sub_order| %>
       <tr>
         <td><%= sub_order.name %></td>
+        <td><%= sub_order.order.name %></td>
         <td><%= link_to 'Show', sub_order %></td>
         <td><%= link_to 'Edit', edit_sub_order_path(sub_order) %></td>
         <td><%= link_to 'Destroy', sub_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

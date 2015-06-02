@@ -69,6 +69,6 @@ class SubOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_order_params
-      params.require(:sub_order).permit(:name)
+      params.require(:sub_order).permit(:name, :order_id)
     end
 end
