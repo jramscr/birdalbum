@@ -50,6 +50,9 @@ gem 'jquery-ui-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use to manage nested associations
+gem 'cocoon', '~> 1.2.6'
+
 group :development, :test do
 
   gem 'rename'

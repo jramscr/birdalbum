@@ -12,4 +12,16 @@ module SpeciesHelper
     QuantityEgg.find(species.quantity_egg_id).description
   end
 
+  def formatted_zone_name(zone)
+    "#{zone.description} entre los #{zone.maximumAltitude} y #{zone.minimumAltitude} MSNM"
+  end
+
+  def formatted_zones_info(species)
+    if species.zones.any?
+      species.zones.pluck(:description).join(", ")
+    else
+      "Información no disponible"
+    end
+  end
+
 end

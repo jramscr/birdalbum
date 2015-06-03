@@ -69,6 +69,6 @@ class SpeciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def species_params
-      params.require(:species).permit(:name, :gender_id, :beak_type_id, :size_id, :quantity_egg_id)
+      params.require(:species).permit(:name, :gender_id, :beak_type_id, :size_id, :quantity_egg_id, zones_attributes: [:id, :description, :_destroy] )
     end
 end

@@ -7,6 +7,15 @@
     <%= f.input :beak_type_id, collection: BeakType.all.map { |beak| [beak.name, beak.id] } %>
     <%= f.input :size_id, collection: Size.all.map { |size| ["#{formatted_size(size)}", size.id] } %>
     <%= f.input :quantity_egg_id, collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
+    <h3>Agregar Zona</h3>
+    <div id="zones">
+      <%= f.simple_fields_for :zones do |zone| %>
+        <%= render 'zone_fields', f: zone %>
+      <% end %>
+      <div class="nested-link">
+        <%= link_to_add_association 'Add Zone', f, :zones %>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">

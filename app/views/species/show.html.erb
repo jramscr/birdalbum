@@ -25,5 +25,14 @@
   <%= formatted_eggs_quantity(@species) %>
 </p>
 
+<p>
+  <strong>Zones:</strong>
+  <ul>
+    <%- @species.zones.each do |zone| %>
+      <li><%= formatted_zone_name(zone) %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_species_path(@species) %> |
 <%= link_to 'Back', species_index_path %>
