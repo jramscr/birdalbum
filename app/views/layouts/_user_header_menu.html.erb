@@ -1,6 +1,6 @@
 <div class="row">
-  <%= link_to "Mi Perfil", user_path(current_user) %> |
-  <%= link_to "Mi Dalbum", birds_path %> |
-  <%= link_to "Nueva Fotografía", new_bird_path %> |
-  <%= link_to "Salir", destroy_user_session_path, method: :delete %>|
+  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: 'right tiny button success' %>
+  <%= link_to "Nueva Fotografía", new_bird_path , class: 'right tiny button success' %>
+  <%= link_to "Mi Dalbum", birds_path, class: 'right tiny button success' %>
+  <%= link_to "Mi Perfil", user_path(current_user), class: 'right tiny button success' %>
 </div>

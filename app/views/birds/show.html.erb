@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/user_header_menu" %>
 
-<p>
-  <strong>Commonname:</strong>
-  <%= @bird.commonName %>
-</p>
+<div class="row">
+  <div class="row collapse">
+    <%= link_to 'Editar', edit_bird_path(@bird), class: 'small success round button' %> |
+    <%= link_to 'Mi dalbum', birds_path, class: 'small info round button' %>
+  </div>
 
-<p>
-  <strong>Scientificname:</strong>
-  <%= @bird.scientificName %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bird.description %>
-</p>
+  <p>
+    <strong>Nombre común:</strong>
+    <%= @bird.commonName %>
+  </p>
 
-<%= link_to 'Edit', edit_bird_path(@bird) %> |
-<%= link_to 'Back', birds_path %>
+  <p>
+    <strong>Nombre científico:</strong>
+    <%= @bird.scientificName %>
+  </p>
+
+  <p>
+    <strong>Descripción:</strong>
+    <%= @bird.description %>
+  </p>
+
+</div>

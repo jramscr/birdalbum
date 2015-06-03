@@ -1,6 +1,9 @@
-<h1>Editing User</h1>
+<%= render "layouts/user_header_menu" %>
 
-<%= render 'form' %>
+<div class="row">
+  <h1>Editar Información</h1>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <%= render 'form' %>
+
+  <%= link_to 'Cancelar', birds_path, class: "left alert round button" %>
+</div>
