@@ -10,5 +10,20 @@
   <%= @species.gender.name %>
 </p>
 
+<p>
+  <strong>Beak:</strong>
+  <%= formatted_beak_type(@species) %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= formatted_size(@species.size_id) %>
+</p>
+
+<p>
+  <strong>Quantity of Eggs:</strong>
+  <%= formatted_eggs_quantity(@species) %>
+</p>
+
 <%= link_to 'Edit', edit_species_path(@species) %> |
 <%= link_to 'Back', species_index_path %>

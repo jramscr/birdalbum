@@ -4,6 +4,9 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :gender_id, collection: Gender.all.map { |gender| [gender.name, gender.id] } %>
+    <%= f.input :beak_type_id, collection: BeakType.all.map { |beak| [beak.name, beak.id] } %>
+    <%= f.input :size_id, collection: Size.all.map { |size| ["#{formatted_size(size)}", size.id] } %>
+    <%= f.input :quantity_egg_id, collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
   </div>
 
   <div class="form-actions">
