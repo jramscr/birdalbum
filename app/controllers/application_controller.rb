@@ -1,12 +1,19 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  include UsersHelper
   before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
+  end
+
+  if formatted_user_type(current_user) == "Administrador"
+    redirect_to settings_dashboard_path
+  else
+    redirect_to root_url
   end
 
   protected

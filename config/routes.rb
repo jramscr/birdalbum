@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'settings/dashboard'
+
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :contact_types
   resources :contacts
