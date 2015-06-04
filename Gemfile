@@ -53,6 +53,9 @@ gem 'jquery-ui-rails'
 # Use to manage nested associations
 gem 'cocoon', '~> 1.2.6'
 
+# Use to paginate objects in the views
+gem 'kaminari', '~> 0.16.3'
+
 group :development, :test do
 
   gem 'rename'

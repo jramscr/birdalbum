@@ -14,17 +14,18 @@
         <td><%= image_tag('https://s-media-cache-ak0.pinimg.com/236x/46/88/65/46886577309967ec698ffe37fb800b78.jpg') %></td>
       </div>
 
-      <div class="columns large-3">
-        <td><%= bird.commonName %></td>
+      <div class="columns large-2">
+        <td><%= bird.common_name %></td>
       </div>
 
-      <div class="columns large-3">
-        <td><%= bird.scientificName %></td>
-      </div>
-
-      <div class="columns large-3">
+      <div class="columns large-7">
         <td><%= bird.description %></td>
       </div>
     </div>
   <% end %>
 <% end %>
+<div class="row">
+  <div class="columns large-4 large-centered">
+    <%= paginate @birds%>
+  </div>
+</div>

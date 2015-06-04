@@ -4,7 +4,7 @@ class BirdsController < ApplicationController
   # GET /birds
   # GET /birds.json
   def index
-    @birds = Bird.all
+    @birds = Bird.all.page params[:page]
   end
 
   # GET /birds/1
@@ -69,6 +69,6 @@ class BirdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bird_params
-      params.require(:bird).permit(:commonName, :scientificName, :description)
+      params.require(:bird).permit(:common_name, :description)
     end
 end

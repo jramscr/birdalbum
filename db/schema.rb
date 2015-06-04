@@ -23,11 +23,10 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   end
 
   create_table "birds", force: :cascade do |t|
-    t.string   "commonName"
-    t.string   "scientificName"
+    t.string   "common_name"
     t.string   "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "kind_id"
   end
 
@@ -140,8 +139,8 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   create_table "picture_by_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "picture_id"
     t.integer  "user_id"
+    t.integer  "picture_id"
   end
 
   add_index "picture_by_users", ["picture_id"], name: "index_picture_by_users_on_picture_id", using: :btree
@@ -161,10 +160,10 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string   "femaleSize"
-    t.string   "maleSize"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "female_size"
+    t.string   "male_size"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "species", force: :cascade do |t|
@@ -202,13 +201,13 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   add_index "sub_orders", ["order_id"], name: "index_sub_orders_on_order_id", using: :btree
 
   create_table "user_types", force: :cascade do |t|
-    t.string   "Name"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
     t.string   "username",               default: "", null: false
     t.string   "reset_password_token"
@@ -229,13 +228,14 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "zones", force: :cascade do |t|
     t.string   "description"
-    t.string   "maximumAltitude"
-    t.string   "minimumAltitude"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "maximum_altitude"
+    t.string   "minimum_altitude"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end

@@ -2,8 +2,8 @@ class CreateZones < ActiveRecord::Migration
   def change
     create_table :zones do |t|
       t.string :description
-      t.string :maximumAltitude
-      t.string :minimumAltitude
+      t.string :maximum_altitude
+      t.string :minimum_altitude
 
       t.timestamps null: false
     end

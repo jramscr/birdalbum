@@ -15,3 +15,21 @@
  *= require foundation
 
  */
+
+#footer{
+  height: 7%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  line-height: 50px;
+  color: #FFF;
+  text-align: center;
+  width: 100%;
+  background-color: rgb(67, 172, 106);
+}
+
+.pre-footer{
+  height: 9%!important;
+  background-color: transparent!important;
+  border-color: transparent!important;
+}
