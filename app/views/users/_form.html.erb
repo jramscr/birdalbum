@@ -5,8 +5,6 @@
     <%= f.input :username, hint: 'You cannot change your username.' %>
     <%= f.input :email, hint: 'This field should de unique' %>
     <%= f.input :user_type_id, collection: UserType.all.map { |ut| [ut.name, ut.id] } %>
-    <%= f.input :password, hint: 'Please provide a new password' %>
-    <%= f.input :password_confirmation, hint: 'Please repeat your new password.' %>
   </div>
 
   <div class="form-actions">
