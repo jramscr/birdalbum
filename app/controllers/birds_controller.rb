@@ -1,10 +1,15 @@
 class BirdsController < ApplicationController
+  include UsersHelper
   before_action :set_bird, only: [:show, :edit, :update, :destroy]
 
   # GET /birds
   # GET /birds.json
   def index
-    @birds = Bird.all.page params[:page]
+    if formatted_user_type(current_user) == "Administrador"
+      redirect_to settings_dashboard_path
+    else
+      @birds = Bird.all.page params[:page]
+    end
   end
 
   # GET /birds/1
