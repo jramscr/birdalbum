@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  validates_presence_of :username, :password, :password_confirmation, on: :create, case_sensitive: false
+  validates_presence_of :email, :username, :password, :password_confirmation, on: :create, case_sensitive: false
 
   belongs_to :person
   belongs_to :user_type
