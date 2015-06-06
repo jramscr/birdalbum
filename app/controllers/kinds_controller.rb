@@ -1,4 +1,5 @@
 class KindsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
 
   # GET /kinds

@@ -1,4 +1,5 @@
 class ZonesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_zone, only: [:show, :edit, :update, :destroy]
 
   # GET /zones

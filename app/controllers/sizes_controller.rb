@@ -1,4 +1,5 @@
 class SizesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_size, only: [:show, :edit, :update, :destroy]
 
   # GET /sizes

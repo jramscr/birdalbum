@@ -1,5 +1,6 @@
 class BirdsController < ApplicationController
   include UsersHelper
+  load_and_authorize_resource
   before_action :set_bird, only: [:show, :edit, :update, :destroy]
 
   # GET /birds

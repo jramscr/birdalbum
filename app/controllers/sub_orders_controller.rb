@@ -1,4 +1,5 @@
 class SubOrdersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_sub_order, only: [:show, :edit, :update, :destroy]
 
   # GET /sub_orders

@@ -1,5 +1,6 @@
 class Ability
   include CanCan::Ability
+  include UsersHelper
 
   attr_reader :user
 
@@ -9,7 +10,7 @@ class Ability
     if formatted_user_type(user) == "Administrador"
       can :manage, :all
     elsif formatted_user_type(user) == ("Aficionado" || "Ornitólogo")
-      can :read, User, user_id: user.id
+      can [:read, :update], User, id: user.id
       can :manage, Bird
     end
 

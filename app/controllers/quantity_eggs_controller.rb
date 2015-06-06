@@ -1,4 +1,5 @@
 class QuantityEggsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_quantity_egg, only: [:show, :edit, :update, :destroy]
 
   # GET /quantity_eggs
