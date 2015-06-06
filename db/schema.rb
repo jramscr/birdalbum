@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531113640) do
+ActiveRecord::Schema.define(version: 20150606154800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,16 +31,6 @@ ActiveRecord::Schema.define(version: 20150531113640) do
   end
 
   add_index "birds", ["kind_id"], name: "index_birds_on_kind_id", using: :btree
-
-  create_table "color_by_species", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "color_id"
-    t.integer  "species_id"
-  end
-
-  add_index "color_by_species", ["color_id"], name: "index_color_by_species_on_color_id", using: :btree
-  add_index "color_by_species", ["species_id"], name: "index_color_by_species_on_species_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -190,6 +180,16 @@ ActiveRecord::Schema.define(version: 20150531113640) do
 
   add_index "species_by_zones", ["species_id"], name: "index_species_by_zones_on_species_id", using: :btree
   add_index "species_by_zones", ["zone_id"], name: "index_species_by_zones_on_zone_id", using: :btree
+
+  create_table "species_colors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "species_id"
+    t.integer  "color_id"
+  end
+
+  add_index "species_colors", ["color_id"], name: "index_species_colors_on_color_id", using: :btree
+  add_index "species_colors", ["species_id"], name: "index_species_colors_on_species_id", using: :btree
 
   create_table "sub_orders", force: :cascade do |t|
     t.string   "name"
