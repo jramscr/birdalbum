@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="columns large-4 large-centered"><p id="notice"><%= notice %></p>
 
-<h1>Listing Genders</h1>
+    <p>
+      Exportar:
+      <%= link_to "CSV", genders_path(format: :csv) %> |
+      <%= link_to "Excel", genders_path(format: :xls) %>
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Family</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>Lista de Géneros</h1>
 
-  <tbody>
-    <% @genders.each do |gender| %>
-      <tr>
-        <td><%= gender.name %></td>
-        <td><%= gender.family.name %></td>
-        <td><%= link_to 'Show', gender %></td>
-        <td><%= link_to 'Edit', edit_gender_path(gender) %></td>
-        <td><%= link_to 'Destroy', gender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="full-width-table">
+      <thead>
+        <tr>
+          <th>Familia</th>
+          <th>Nombre</th>
+          <th colspan="3">Opciones</th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @genders.each do |gender| %>
+          <tr>
+            <td><%= gender.family.name %></td>
+            <td><%= gender.name %></td>
+            <td><%= link_to 'Editar', edit_gender_path(gender) %></td>
+            <td><%= link_to 'Eliminar', gender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Gender', new_gender_path %>
+    <br>
+
+    <%= link_to 'Nuevo Género', new_gender_path, class: 'round tiny button success right' %>
+  </div>
+</div>

@@ -4,6 +4,7 @@
     <%= link_to kinds_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Clases
+        <h3><%= Kind.count %></h3>
       </div>
     <% end %>
   </div>
@@ -12,6 +13,7 @@
     <%= link_to orders_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Ordenes
+        <h3> <%= Order.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -20,6 +22,7 @@
     <%= link_to sub_orders_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Subordenes
+        <h3><%= SubOrder.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -28,6 +31,7 @@
     <%= link_to families_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Familias
+        <h3><%= Family.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -36,6 +40,7 @@
     <%= link_to genders_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Géneros
+        <h3><%= Gender.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -44,6 +49,7 @@
     <%= link_to species_index_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Especies
+        <h3><%= Species.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -52,6 +58,7 @@
     <%= link_to quantity_eggs_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Cantidad de Huevos
+        <h3><%= QuantityEgg.count %></h3>
       </div>
     <% end %>
   </div>
@@ -60,6 +67,7 @@
     <%= link_to colors_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Colores
+        <h3><%= Color.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -68,6 +76,7 @@
     <%= link_to zones_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Zonas
+        <h3><%= Zone.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -76,6 +85,7 @@
     <%= link_to beak_types_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Tipos de Pico
+        <h3><%= BeakType.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -84,6 +94,7 @@
     <%= link_to sizes_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Tamaños
+        <h3><%= Size.count %> </h3>
       </div>
     <% end %>
   </div>
@@ -92,6 +103,7 @@
     <%= link_to common_names_path do %>
       <div class="panel callout columns large-3 text-center radius full-width-table">
         Nombres Comunes
+        <h3><%= CommonName.count %></h3>
       </div>
     <% end %>
   </div>
