@@ -33,7 +33,7 @@ class KindsController < ApplicationController
 
     respond_to do |format|
       if @kind.save
-        format.html { redirect_to @kind, notice: 'La clase fue creada con éxito.' }
+        format.html { redirect_to kinds_path, notice: 'La clase fue creada con éxito.' }
         format.json { render :show, status: :created, location: @kind }
       else
         format.html { render :new }

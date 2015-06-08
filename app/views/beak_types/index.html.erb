@@ -1,27 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="columns large-4 large-centered"><p id="notice"><%= notice %></p>
 
-<h1>Listing Beak Types</h1>
+    <p>
+      Exportar:
+      <%= link_to "CSV", beak_types_path(format: :csv) %> |
+      <%= link_to "Excel", beak_types_path(format: :xls) %>
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>Lista de Picos</h1>
 
-  <tbody>
-    <% @beak_types.each do |beak_type| %>
-      <tr>
-        <td><%= beak_type.name %></td>
-        <td><%= link_to 'Show', beak_type %></td>
-        <td><%= link_to 'Edit', edit_beak_type_path(beak_type) %></td>
-        <td><%= link_to 'Destroy', beak_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="full-width-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th colspan="3">Opciones</th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @beak_types.each do |beak_type| %>
+          <tr>
+            <td><%= beak_type.name %></td>
+            <td><%= link_to 'Editar', edit_beak_type_path(beak_type) %></td>
+            <td><%= link_to 'Eliminar', beak_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Beak type', new_beak_type_path %>
+    <br>
+
+    <%= link_to 'Nuevo Pico', new_beak_type_path, class: 'round tiny button success right' %>
+  </div>
+</div>

@@ -34,7 +34,7 @@ class BeakTypesController < ApplicationController
 
     respond_to do |format|
       if @beak_type.save
-        format.html { redirect_to @beak_type, notice: 'Beak type was successfully created.' }
+        format.html { redirect_to beak_types_path, notice: 'El pico fue creado.' }
         format.json { render :show, status: :created, location: @beak_type }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class BeakTypesController < ApplicationController
   def update
     respond_to do |format|
       if @beak_type.update(beak_type_params)
-        format.html { redirect_to @beak_type, notice: 'Beak type was successfully updated.' }
+        format.html { redirect_to beak_types_path, notice: 'El pico fue actualizado.' }
         format.json { render :show, status: :ok, location: @beak_type }
       else
         format.html { render :edit }
