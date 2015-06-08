@@ -34,7 +34,7 @@ class ZonesController < ApplicationController
 
     respond_to do |format|
       if @zone.save
-        format.html { redirect_to @zone, notice: 'Zone was successfully created.' }
+        format.html { redirect_to zones_path, notice: 'La zona fue creada.' }
         format.json { render :show, status: :created, location: @zone }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class ZonesController < ApplicationController
   def update
     respond_to do |format|
       if @zone.update(zone_params)
-        format.html { redirect_to @zone, notice: 'Zone was successfully updated.' }
+        format.html { redirect_to zones_path, notice: 'La zona fue actualizada.' }
         format.json { render :show, status: :ok, location: @zone }
       else
         format.html { render :edit }
@@ -75,6 +75,6 @@ class ZonesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zone_params
-      params.require(:zone).permit(:description, :maximumAltitude, :minimumAltitude)
+      params.require(:zone).permit(:description)
     end
 end
