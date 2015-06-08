@@ -6,17 +6,13 @@ class BirdsController < ApplicationController
   # GET /birds
   # GET /birds.json
   def index
-    if formatted_user_type(current_user) == "Administrador"
+    if current_user.admin?
       redirect_to settings_dashboard_path
     else
       @birds = Bird.all.page params[:page]
     end
-
-    respond_to do |f|
-      f.html
-      f.csv { render text: @birds.to_csv }
-      f.xls
-    end
+    #f.csv { render text: @birds.to_csv }
+    #f.xls
   end
 
   # GET /birds/1

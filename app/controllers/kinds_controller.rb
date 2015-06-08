@@ -66,6 +66,11 @@ class KindsController < ApplicationController
     end
   end
 
+  def import
+    Kind.import(params[:file])
+    redirect_to kinds_path, notice: "Clases importados."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_kind

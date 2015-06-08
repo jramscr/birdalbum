@@ -1,14 +1,32 @@
+<%= render 'layouts/user_header_menu' %>
 <div class="row">
   <div class="columns large-4 large-centered">
     <p id="notice"><%= notice %></p>
 
     <p>
       Exportar:
-      <%= link_to "CSV", kinds_path(format: :csv) %> |
-      <%= link_to "Excel", kinds_path(format: :xls) %>
+      <%= link_to "CSV", kinds_path(format: :csv), class: "exportation-link" %> |
+      <%= link_to "Excel", kinds_path(format: :xls), class: "exportation-link" %>
+      <%= link_to 'Nueva Clase', new_kind_path, class: "tiny round button success right" %>
     </p>
 
-    <h1>Lista de Clases</h1>
+    <p>
+      <%= form_tag import_kinds_path, multipart: true do %>
+        <div class="row">
+          <div class="columns large-4">
+            <p>Importar:</p>
+          </div>
+          <div class="columns large-4">
+            <%= file_field_tag :file %>
+          </div>
+          <div class="columns large-4">
+            <%= submit_tag "Importar", class: 'round tiny button success right' %>
+          </div>
+        </div>
+      <% end %>
+    </p>
+
+    <p>Lista de Clases</p>
 
     <table class="full-width-table">
       <thead>
@@ -31,6 +49,5 @@
 
     <br>
 
-    <%= link_to 'Nueva Clase', new_kind_path, class: "tiny round button success right" %>
   </div>
 </div>

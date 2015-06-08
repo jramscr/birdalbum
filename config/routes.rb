@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :pictures
   resources :user_types
   resources :birds
-  resources :kinds
+  resources :kinds do
+    collection { post :import }
+  end
   resources :beak_types
   resources :beak_types
   resources :sizes

@@ -1,14 +1,15 @@
+<%= render 'layouts/user_header_menu' %>
 <div class="row">
   <div class="columns large-4 large-centered">
     <p id="notice"><%= notice %></p>
 
     <p>
       Exportar:
-      <%= link_to "CSV", families_path(format: :csv) %> |
-      <%= link_to "Excel", families_path(format: :xls) %>
+      <%= link_to "CSV", families_path(format: :csv), class: "exportation-link" %> |
+      <%= link_to "Excel", families_path(format: :xls), class: "exportation-link" %>
     </p>
 
-    <h1>Listing Families</h1>
+    <p>Listing Families</p>
 
     <table class="full-width-table">
       <thead>

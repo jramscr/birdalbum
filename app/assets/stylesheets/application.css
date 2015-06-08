@@ -16,7 +16,14 @@
 
  */
 
-#footer{
+p, label {
+  color: #FFF!important;
+}
+h1, h2, h3 {
+  color: cornflowerblue!important;
+}
+
+#footer {
   height: 7%;
   position: fixed;
   bottom: 0px;
@@ -28,7 +35,7 @@
   background-color: rgb(67, 172, 106);
 }
 
-.pre-footer{
+.pre-footer {
   height: 9%!important;
   background-color: transparent!important;
   border-color: transparent!important;
@@ -36,4 +43,9 @@
 
 .full-width-table {
   width: 100%!important;
+}
+
+.exportation-link, .exportation-link:hover {
+  color: orange!important;
+  background-color: transparent!important;
 }
