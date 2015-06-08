@@ -34,7 +34,7 @@ class SizesController < ApplicationController
 
     respond_to do |format|
       if @size.save
-        format.html { redirect_to @size, notice: 'Size was successfully created.' }
+        format.html { redirect_to sizes_path, notice: 'El tamaño ha sido declarado.' }
         format.json { render :show, status: :created, location: @size }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class SizesController < ApplicationController
   def update
     respond_to do |format|
       if @size.update(size_params)
-        format.html { redirect_to @size, notice: 'Size was successfully updated.' }
+        format.html { redirect_to sizes_path, notice: 'Se actualizo el tamaño.' }
         format.json { render :show, status: :ok, location: @size }
       else
         format.html { render :edit }
@@ -75,6 +75,6 @@ class SizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def size_params
-      params.require(:size).permit(:femaleSize, :maleSize)
+      params.require(:size).permit(:description)
     end
 end
