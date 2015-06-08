@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="columns large-4 large-centered">
+    <p id="notice"><%= notice %></p>
 
-<h1>Listing Families</h1>
+    <p>
+      Exportar:
+      <%= link_to "CSV", families_path(format: :csv) %> |
+      <%= link_to "Excel", families_path(format: :xls) %>
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>SubOrder</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>Listing Families</h1>
 
-  <tbody>
-    <% @families.each do |family| %>
-      <tr>
-        <td><%= family.name %></td>
-        <td><%= family.sub_order.name %></td>
-        <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_path(family) %></td>
-        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="full-width-table">
+      <thead>
+        <tr>
+          <th>Suborden</th>
+          <th>Nombre</th>
+          <th colspan="3">Opciones</th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @families.each do |family| %>
+          <tr>
+            <td><%= family.sub_order.name %></td>
+            <td><%= family.name %></td>
+            <td><%= link_to 'Editar', edit_family_path(family) %></td>
+            <td><%= link_to 'Eliminar', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Family', new_family_path %>
+    <br>
+
+    <%= link_to 'Nueva Familia', new_family_path, class: 'tiny button success round right' %>
+  </div>
+</div>

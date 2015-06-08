@@ -7,6 +7,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "#{action_name == 'new' ? 'Crear' : 'Actualizar' }", class: 'right tiny button success round' %>
+    <%= link_to 'Cancelar', families_path, class: 'left tiny round button alert' %>
   </div>
 <% end %>
