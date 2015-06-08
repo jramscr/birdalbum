@@ -1,27 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="columns large-4 large-centered"><p id="notice"><%= notice %></p>
 
-<h1>Listing Quantity Eggs</h1>
+    <p>
+      Exportar:
+      <%= link_to "CSV", quantity_eggs_path(format: :csv) %> |
+      <%= link_to "Excel", quantity_eggs_path(format: :xls) %>
+    </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>Lista de Cantidad de Huevos</h1>
 
-  <tbody>
-    <% @quantity_eggs.each do |quantity_egg| %>
-      <tr>
-        <td><%= quantity_egg.description %></td>
-        <td><%= link_to 'Show', quantity_egg %></td>
-        <td><%= link_to 'Edit', edit_quantity_egg_path(quantity_egg) %></td>
-        <td><%= link_to 'Destroy', quantity_egg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="full-width-table">
+      <thead>
+        <tr>
+          <th>Descripción</th>
+          <th colspan="3">Opciones</th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @quantity_eggs.each do |quantity_egg| %>
+          <tr>
+            <td><%= quantity_egg.description %></td>
+            <td><%= link_to 'Editar', edit_quantity_egg_path(quantity_egg) %></td>
+            <td><%= link_to 'Eliminar', quantity_egg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Quantity egg', new_quantity_egg_path %>
+    <br>
+
+    <%= link_to 'Nueva entrada', new_quantity_egg_path, class: 'round tiny button success right' %>
+  </div>
+</div>

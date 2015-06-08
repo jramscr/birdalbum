@@ -34,7 +34,7 @@ class QuantityEggsController < ApplicationController
 
     respond_to do |format|
       if @quantity_egg.save
-        format.html { redirect_to @quantity_egg, notice: 'Quantity egg was successfully created.' }
+        format.html { redirect_to quantity_eggs_path, notice: 'La descripción de huevos fue creada.' }
         format.json { render :show, status: :created, location: @quantity_egg }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class QuantityEggsController < ApplicationController
   def update
     respond_to do |format|
       if @quantity_egg.update(quantity_egg_params)
-        format.html { redirect_to @quantity_egg, notice: 'Quantity egg was successfully updated.' }
+        format.html { redirect_to quantity_eggs_path, notice: 'La descripción de huevos fue actualizada.' }
         format.json { render :show, status: :ok, location: @quantity_egg }
       else
         format.html { render :edit }
