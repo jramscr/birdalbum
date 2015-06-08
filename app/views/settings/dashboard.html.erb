@@ -1,3 +1,14 @@
-<%= render "layouts/user_header_menu" %>
-<h1>Settings#dashboard</h1>
-<p>Find me in app/views/settings/dashboard.html.erb</p>
+<div class="row">
+  <%= link_to "Clases", kinds_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Ordenes", orders_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Subordenes", sub_orders_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Familias", families_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Géneros", genders_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Especies", species_index_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Cantidad de Huevos", quantity_eggs_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Colores", colors_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Zonas", zones_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Tipos de Picos", beak_types_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Tamaños", sizes_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+  <%= link_to "Nombres Comunes", common_names_path, html_options= { class: "panel callout columns large-3 text-center" } %>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :contact_types
   resources :contacts
+  resources :common_names
   resources :people
   resources :pictures
   resources :user_types

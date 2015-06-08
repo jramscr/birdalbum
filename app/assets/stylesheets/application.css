@@ -33,3 +33,7 @@
   background-color: transparent!important;
   border-color: transparent!important;
 }
+
+.full-width-table {
+  width: 100%;
+}

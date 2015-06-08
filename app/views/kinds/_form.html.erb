@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, label: "Nombre" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit,"#{action_name == 'new' ? 'Crear' : 'Actualizar' }" , class: "tiny round success button right" %>
   </div>
 <% end %>

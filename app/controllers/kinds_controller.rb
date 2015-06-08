@@ -1,11 +1,15 @@
 class KindsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
 
   # GET /kinds
   # GET /kinds.json
   def index
     @kinds = Kind.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @kinds.to_csv }
+      f.xls
+    end
   end
 
   # GET /kinds/1
@@ -29,7 +33,7 @@ class KindsController < ApplicationController
 
     respond_to do |format|
       if @kind.save
-        format.html { redirect_to @kind, notice: 'Kind was successfully created.' }
+        format.html { redirect_to @kind, notice: 'La clase fue creada con éxito.' }
         format.json { render :show, status: :created, location: @kind }
       else
         format.html { render :new }
@@ -43,7 +47,7 @@ class KindsController < ApplicationController
   def update
     respond_to do |format|
       if @kind.update(kind_params)
-        format.html { redirect_to @kind, notice: 'Kind was successfully updated.' }
+        format.html { redirect_to kinds_path, notice: 'La clase fue actualizada.' }
         format.json { render :show, status: :ok, location: @kind }
       else
         format.html { render :edit }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606154800) do
+ActiveRecord::Schema.define(version: 20150607185303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,18 +22,34 @@ ActiveRecord::Schema.define(version: 20150606154800) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "birds", force: :cascade do |t|
-    t.string   "common_name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "kind_id"
+  create_table "bird_by_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "bird_id"
+    t.integer  "user_id"
   end
 
+  add_index "bird_by_users", ["bird_id"], name: "index_bird_by_users_on_bird_id", using: :btree
+  add_index "bird_by_users", ["user_id"], name: "index_bird_by_users_on_user_id", using: :btree
+
+  create_table "birds", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "kind_id"
+    t.integer  "common_name_id"
+  end
+
+  add_index "birds", ["common_name_id"], name: "index_birds_on_common_name_id", using: :btree
   add_index "birds", ["kind_id"], name: "index_birds_on_kind_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "common_names", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,17 +130,15 @@ ActiveRecord::Schema.define(version: 20150606154800) do
   add_index "picture_by_beak_types", ["beak_type_id"], name: "index_picture_by_beak_types_on_beak_type_id", using: :btree
   add_index "picture_by_beak_types", ["picture_id"], name: "index_picture_by_beak_types_on_picture_id", using: :btree
 
-  create_table "picture_by_bird_by_users", force: :cascade do |t|
+  create_table "picture_by_birds", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "picture_id"
-    t.integer  "user_id"
     t.integer  "bird_id"
   end
 
-  add_index "picture_by_bird_by_users", ["bird_id"], name: "index_picture_by_bird_by_users_on_bird_id", using: :btree
-  add_index "picture_by_bird_by_users", ["picture_id"], name: "index_picture_by_bird_by_users_on_picture_id", using: :btree
-  add_index "picture_by_bird_by_users", ["user_id"], name: "index_picture_by_bird_by_users_on_user_id", using: :btree
+  add_index "picture_by_birds", ["bird_id"], name: "index_picture_by_birds_on_bird_id", using: :btree
+  add_index "picture_by_birds", ["picture_id"], name: "index_picture_by_birds_on_picture_id", using: :btree
 
   create_table "picture_by_users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -207,7 +221,7 @@ ActiveRecord::Schema.define(version: 20150606154800) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: ""
+    t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "username",               default: "", null: false
     t.string   "reset_password_token"
@@ -224,7 +238,6 @@ ActiveRecord::Schema.define(version: 20150606154800) do
     t.integer  "user_type_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
