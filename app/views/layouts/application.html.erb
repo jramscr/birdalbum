@@ -6,6 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Birdalbum - Tu Album Digital" %></title>
 
+    <%= favicon_link_tag 'http://findicons.com/files/icons/1601/cute_critters/512/t9tuqui_trans.png' %>
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
