@@ -33,7 +33,7 @@ class CommonNamesController < ApplicationController
 
     respond_to do |format|
       if @common_name.save
-        format.html { redirect_to @common_name, notice: 'Common name was successfully created.' }
+        format.html { redirect_to common_names_path, notice: 'El nombre común ha sido creado.' }
         format.json { render :show, status: :created, location: @common_name }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class CommonNamesController < ApplicationController
   def update
     respond_to do |format|
       if @common_name.update(common_name_params)
-        format.html { redirect_to @common_name, notice: 'Common name was successfully updated.' }
+        format.html { redirect_to common_names_path, notice: 'El nombre común ha sido actualizado.' }
         format.json { render :show, status: :ok, location: @common_name }
       else
         format.html { render :edit }
@@ -74,6 +74,6 @@ class CommonNamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def common_name_params
-      params[:common_name]
+      params.require(:common_name).permit(:name)
     end
 end
