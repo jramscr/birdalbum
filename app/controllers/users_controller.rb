@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @users.to_csv }
+      f.xls
+    end
   end
 
   # GET /users/1
@@ -25,7 +30,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    1/0
     @user = User.new(user_params)
 
     respond_to do |format|

@@ -6,6 +6,11 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @people.to_csv }
+      f.xls
+    end
   end
 
   # GET /people/1

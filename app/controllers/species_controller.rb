@@ -6,6 +6,11 @@ class SpeciesController < ApplicationController
   # GET /species.json
   def index
     @species = Species.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @species.to_csv }
+      f.xls
+    end
   end
 
   # GET /species/1

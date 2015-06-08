@@ -6,6 +6,11 @@ class ColorsController < ApplicationController
   # GET /colors.json
   def index
     @colors = Color.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @colors.to_csv }
+      f.xls
+    end
   end
 
   # GET /colors/1

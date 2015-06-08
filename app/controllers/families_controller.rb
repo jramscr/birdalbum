@@ -6,6 +6,11 @@ class FamiliesController < ApplicationController
   # GET /families.json
   def index
     @families = Family.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @families.to_csv }
+      f.xls
+    end
   end
 
   # GET /families/1

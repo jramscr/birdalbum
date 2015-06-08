@@ -6,6 +6,11 @@ class SizesController < ApplicationController
   # GET /sizes.json
   def index
     @sizes = Size.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @sizes.to_csv }
+      f.xls
+    end
   end
 
   # GET /sizes/1

@@ -6,6 +6,11 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @birds.to_csv }
+      f.xls
+    end
   end
 
   # GET /contacts/1

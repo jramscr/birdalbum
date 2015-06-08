@@ -6,6 +6,11 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @orders.to_csv }
+      f.xls
+    end
   end
 
   # GET /orders/1
@@ -29,7 +34,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'El orden fue creado.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -43,7 +48,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to orders_path, notice: 'EL orden fue actualizado.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }

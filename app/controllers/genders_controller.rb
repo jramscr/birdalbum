@@ -6,6 +6,11 @@ class GendersController < ApplicationController
   # GET /genders.json
   def index
     @genders = Gender.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @genders.to_csv }
+      f.xls
+    end
   end
 
   # GET /genders/1

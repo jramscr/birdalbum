@@ -4,14 +4,16 @@ xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
 xmlns:html="http://www.w3.org/TR/REC-html40">
-<Worksheet ss:Name="Clases">
+<Worksheet ss:Name="Ordenes">
 <Table>
 <Row>
-<Cell><Data ss:Type="String">Name</Data></Cell>
+<Cell><Data ss:Type="String">Clase</Data></Cell>
+<Cell><Data ss:Type="String">Nombre</Data></Cell>
 </Row>
-<% @kinds.each do |k| %>
+<% @orders.each do |o| %>
   <Row>
-  <Cell><Data ss:Type="String"><%= k.name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= o.kind.name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= o.name %></Data></Cell>
   </Row>
 <% end %>
 </Table>

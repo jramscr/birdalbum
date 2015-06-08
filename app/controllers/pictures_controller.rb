@@ -6,6 +6,11 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @pictures.to_csv }
+      f.xls
+    end
   end
 
   # GET /pictures/1

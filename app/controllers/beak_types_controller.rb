@@ -6,6 +6,11 @@ class BeakTypesController < ApplicationController
   # GET /beak_types.json
   def index
     @beak_types = BeakType.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @beak_types.to_csv }
+      f.xls
+    end
   end
 
   # GET /beak_types/1

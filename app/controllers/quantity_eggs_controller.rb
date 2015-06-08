@@ -6,6 +6,11 @@ class QuantityEggsController < ApplicationController
   # GET /quantity_eggs.json
   def index
     @quantity_eggs = QuantityEgg.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @quantitys.to_csv }
+      f.xls
+    end
   end
 
   # GET /quantity_eggs/1

@@ -6,6 +6,11 @@ class UserTypesController < ApplicationController
   # GET /user_types.json
   def index
     @user_types = UserType.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @user_types.to_csv }
+      f.xls
+    end
   end
 
   # GET /user_types/1

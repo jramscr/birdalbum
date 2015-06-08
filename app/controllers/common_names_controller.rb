@@ -5,6 +5,11 @@ class CommonNamesController < ApplicationController
   # GET /common_names.json
   def index
     @common_names = CommonName.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @common_names.to_csv }
+      f.xls
+    end
   end
 
   # GET /common_names/1

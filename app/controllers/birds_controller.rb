@@ -11,6 +11,12 @@ class BirdsController < ApplicationController
     else
       @birds = Bird.all.page params[:page]
     end
+
+    respond_to do |f|
+      f.html
+      f.csv { render text: @birds.to_csv }
+      f.xls
+    end
   end
 
   # GET /birds/1

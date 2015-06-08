@@ -6,6 +6,11 @@ class ZonesController < ApplicationController
   # GET /zones.json
   def index
     @zones = Zone.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @zones.to_csv }
+      f.xls
+    end
   end
 
   # GET /zones/1
