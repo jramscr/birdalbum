@@ -9,6 +9,7 @@ class Species < ActiveRecord::Base
 
   has_many :birds
 
+  accepts_nested_attributes_for :species_by_zones, allow_destroy: true
   accepts_nested_attributes_for :zones, reject_if: :all_blank, allow_destroy: true
 
   def self.to_csv

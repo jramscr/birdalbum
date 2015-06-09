@@ -6,7 +6,8 @@
     <%= f.input :gender_id, label: "Género", collection: Gender.all.map { |gender| [gender.name, gender.id] } %>
     <%= f.input :beak_type_id, label: "Tipo de Pico", collection: BeakType.all.map { |beak| [beak.name, beak.id] } %>
     <%= f.input :size_id, label: "Tamaño", collection: Size.all.map { |size| ["#{formatted_size(size)}", size.id] } %>
-    <%= f.input :quantity_egg_id, label: "Cantidad de Huevos",collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
+    <%= f.input :quantity_egg_id, label: "Cantidad de Huevos", collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
+
     <h3>Agregar Zona</h3>
     <div id="zones">
       <%= f.simple_fields_for :zones do |zone| %>
