@@ -49,9 +49,6 @@ gem 'jquery-ui-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Use to manage nested associations
 gem 'cocoon', '~> 1.2.6'
 
