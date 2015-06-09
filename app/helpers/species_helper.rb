@@ -9,7 +9,7 @@ module SpeciesHelper
   end
 
   def formatted_size(size)
-    if Size.find(size).description.nil?
+    if size.nil?
       "No hay tamaño"
     else
       "#{Size.find(size).description} apróximadamente."
