@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Especies">
+<Table>
+<Row>
+<Cell><Data ss:Type="String">Nombre</Data></Cell>
+<Cell><Data ss:Type="String">Género</Data></Cell>
+<Cell><Data ss:Type="String">Tipo de Pico</Data></Cell>
+<Cell><Data ss:Type="String">Tamaño</Data></Cell>
+<Cell><Data ss:Type="String">Cantidad</Data></Cell>
+<Cell><Data ss:Type="String">Zonas de Vida</Data></Cell>
+</Row>
+<% @species.each do |k| %>
+  <Row>
+  <Cell><Data ss:Type="String"><%= k.name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= k.gender.name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_beak_type(k) %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_size(k.size_id) %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_eggs_quantity(k) %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_zones_info(k) %></Data></Cell>
+  </Row>
+<% end %>
+</Table>
+</Worksheet>
+</Workbook>

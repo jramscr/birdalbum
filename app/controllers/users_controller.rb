@@ -6,16 +6,17 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    respond_to do |f|
-      f.html
-      f.csv { render text: @users.to_csv }
-      f.xls
-    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @birds = Bird.all
+    respond_to do |f|
+      f.html
+      f.csv { render text: @users.to_csv }
+      f.xls
+    end
   end
 
   # GET /users/new

@@ -8,5 +8,6 @@
   <%- if current_user.admin? %>
     <%= link_to "Dashboard", settings_dashboard_path, class: 'right tiny button success' %>
     <%= link_to "Aves Inciertas", settings_insertaes_path, class: 'right tiny button success' %>
+    <%= link_to "Usuarios", users_path, class: 'right tiny button success' %>
   <% end %>
 </div>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Información de Usuario">
+<Table>
+<Row>
+<Cell><Data ss:Type="String">Nombre de Usuario</Data></Cell>
+<Cell><Data ss:Type="String">Correo</Data></Cell>
+<Cell><Data ss:Type="String">Tipo de Usuario</Data></Cell>
+<Cell><Data ss:Type="String">Nombre</Data></Cell>
+<Cell><Data ss:Type="String">Apellido</Data></Cell>
+<Cell><Data ss:Type="String">Cédula</Data></Cell>
+</Row>
+  <Row>
+  <Cell><Data ss:Type="String"><%= @user.username %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_email(@user) %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_user_type(@user)%></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_person_name(@user)%></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_person_lastname(@user)%></Data></Cell>
+  <Cell><Data ss:Type="String"><%= formatted_person_identifier(@user)%></Data></Cell>
+  </Row>
+</Table>
+</Worksheet>
+<Worksheet ss:Name="Pajaros Usuario">
+<Table>
+<Row>
+<Cell><Data ss:Type="String">Nombre Común</Data></Cell>
+<Cell><Data ss:Type="String">Género</Data></Cell>
+<Cell><Data ss:Type="String">Especie</Data></Cell>
+<Cell><Data ss:Type="String">Tipo de Pico</Data></Cell>
+<Cell><Data ss:Type="String">Tamaño</Data></Cell>
+<Cell><Data ss:Type="String">Cantidad de Huevos</Data></Cell>
+</Row>
+<% @birds.by_user(@user).each do |o| %>
+  <Row>
+  <Cell><Data ss:Type="String"><%= common_name(o).name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= gender(o).name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= species(o).name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= beak(o).name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= size(o).description %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= egg(o).description %></Data></Cell>
+  </Row>
+<%end%>
+</Table>
+</Worksheet>
+</Workbook>

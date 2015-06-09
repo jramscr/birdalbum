@@ -5,6 +5,13 @@
 
   <div class="row collapse">
     <%= link_to 'Editar', edit_user_path(@user), class: 'left success round small button' %>
+    <%- if current_user.admin? %>
+      <p class="right">
+        Exportar:
+        <%= link_to "CSV", user_path(@user, format: :csv), class: "exportation-link" %> |
+        <%= link_to "Excel", user_path(@user, format: :xls), class: "exportation-link" %>
+      </p>
+    <% end %>
   </div>
   <br/>
 

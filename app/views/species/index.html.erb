@@ -3,6 +3,13 @@
   <div class="columns large-10 large-centered">
     <p id="notice"><%= notice %></p>
 
+    <p>
+      Exportar:
+      <%= link_to "CSV", species_index_path(format: :csv) %> |
+      <%= link_to "Excel", species_index_path(format: :xls) %>
+    </p>
+
+
     <p>Lista de Especies</p>
 
     <table class="full-width-table">
