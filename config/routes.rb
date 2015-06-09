@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'settings/dashboard'
+  get 'settings/insertaes'
 
   devise_for :users
   resources :contact_types
