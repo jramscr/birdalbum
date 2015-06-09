@@ -2,23 +2,24 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :gender_id, collection: Gender.all.map { |gender| [gender.name, gender.id] } %>
-    <%= f.input :beak_type_id, collection: BeakType.all.map { |beak| [beak.name, beak.id] } %>
-    <%= f.input :size_id, collection: Size.all.map { |size| ["#{formatted_size(size)}", size.id] } %>
-    <%= f.input :quantity_egg_id, collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
+    <%= f.input :name, label: "Nombre" %>
+    <%= f.input :gender_id, label: "Género", collection: Gender.all.map { |gender| [gender.name, gender.id] } %>
+    <%= f.input :beak_type_id, label: "Tipo de Pico", collection: BeakType.all.map { |beak| [beak.name, beak.id] } %>
+    <%= f.input :size_id, label: "Tamaño", collection: Size.all.map { |size| ["#{formatted_size(size)}", size.id] } %>
+    <%= f.input :quantity_egg_id, label: "Cantidad de Huevos",collection: QuantityEgg.all.map { |eggs| [eggs.description, eggs.id] } %>
     <h3>Agregar Zona</h3>
     <div id="zones">
       <%= f.simple_fields_for :zones do |zone| %>
         <%= render 'zone_fields', f: zone %>
       <% end %>
       <div class="nested-link">
-        <%= link_to_add_association 'Add Zone', f, :zones %>
+        <%= link_to_add_association 'Agregar Zona', f, :zones %>
       </div>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit,"#{ action_name == 'new' ? 'Crear' : 'Actualizar'}", class: 'round tiny button success right' %>
+    <%= link_to 'Cancelar', species_index_path, class: 'alert tiny button left round' %>
   </div>
 <% end %>

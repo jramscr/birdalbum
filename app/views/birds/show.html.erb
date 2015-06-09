@@ -8,14 +8,46 @@
 
   <p id="notice"><%= notice %></p>
 
-  <p>
+  <div class="columns large-2">
+    <td><%= image_tag('https://s-media-cache-ak0.pinimg.com/236x/46/88/65/46886577309967ec698ffe37fb800b78.jpg') %></td>
+  </div>
+
+  <div class="columns large-5">
+    <p>
     <strong>Nombre común:</strong>
-    <%= @bird.common_name %>
-  </p>
+    <%= common_name(@bird).name %>
+    </p>
 
-  <p>
-    <strong>Descripción:</strong>
-    <%= @bird.description %>
-  </p>
+    <p>
+    <strong>Nombre Científico:</strong>
+    <%= "#{gender(@bird).name} #{species(@bird).name}" %>
+    </p>
 
+    <p>
+    <strong>Género:</strong>
+    <%= gender(@bird).name %>
+    </p>
+
+    <p>
+    <strong>Especie:</strong>
+    <%= species(@bird).name %>
+    </p>
+  </div>
+
+  <div class="columns large-5">
+    <p>
+    <strong>Tipo de Pico:</strong>
+    <%= beak(@bird).name %>
+    </p>
+
+    <p>
+    <strong>Tamaño:</strong>
+    <%= size(@bird).description %>
+    </p>
+
+    <p>
+    <strong>Huevos:</strong>
+    <%= egg(@bird).description %>
+    </p>
+  </div>
 </div>

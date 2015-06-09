@@ -1,4 +1,4 @@
 <div class="nested-fields">
-  <%= f.input :description, collection: Zone.all.map { |zone| [formatted_zone_name(zone), zone.description] } %>
-  <%= link_to_remove_association "Remove zone", f %>
+  <%= f.input :description, label: "Descripción", collection: Zone.all.map { |zone| [formatted_zone_name(zone), zone.description] } %>
+  <%= link_to_remove_association "Remover Zona", f %>
 </div>

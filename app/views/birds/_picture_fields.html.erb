@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.file_field :url, accept: 'image/png,image/gif,image/jpeg' %>
+  <%= f.input :name, label: "Descripción" %>
+
+  <%= link_to_remove_association "Remover Fotografía", f %>
+</div>

@@ -2,9 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :username, hint: 'You cannot change your username.' %>
-    <%= f.input :email, hint: 'This field should de unique' %>
+    <%= f.input :username %>
+    <%= f.input :email %>
     <%= f.input :user_type_id, collection: UserType.all.map { |ut| [ut.name, ut.id] } %>
+  </div>
+  <h3> Agregar Datos de Persona</h3>
+  <div id="person">
+    <%= f.simple_fields_for :person do |person| %>
+      <%= render 'person_fields', f: person %>
+    <% end %>
+    <div class="nested-link">
+      <%= link_to_add_association 'Add', f, :person, data: { action: "#{action_name}" }, class: "user-link" %>
+    </div>
   </div>
 
   <div class="form-actions">

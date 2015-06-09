@@ -36,7 +36,7 @@ class BirdsController < ApplicationController
 
     respond_to do |format|
       if @bird.save
-        format.html { redirect_to @bird, notice: 'Bird was successfully created.' }
+        format.html { redirect_to birds_path, notice: 'El Ave fue creada.' }
         format.json { render :show, status: :created, location: @bird }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class BirdsController < ApplicationController
   def update
     respond_to do |format|
       if @bird.update(bird_params)
-        format.html { redirect_to @bird, notice: 'Bird was successfully updated.' }
+        format.html { redirect_to birds_path, notice: 'Bird was successfully updated.' }
         format.json { render :show, status: :ok, location: @bird }
       else
         format.html { render :edit }
@@ -77,6 +77,6 @@ class BirdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bird_params
-      params.require(:bird).permit(:common_name, :description)
+      params.require(:bird).permit(:common_name_id, :description, :species_id, picture_fields: [:id, :url, :name, :_destroy] )
     end
 end

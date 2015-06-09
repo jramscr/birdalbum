@@ -5,7 +5,7 @@ module SpeciesHelper
   end
 
   def formatted_size(size)
-    "Tamaño hembra #{Size.find(size).femaleSize} cm y macho #{Size.find(size).maleSize} cm"
+    "#{Size.find(size).description} apróximadamente."
   end
 
   def formatted_eggs_quantity(species)
@@ -13,7 +13,7 @@ module SpeciesHelper
   end
 
   def formatted_zone_name(zone)
-    "#{zone.description} entre los #{zone.maximumAltitude} y #{zone.minimumAltitude} MSNM"
+    zone.description
   end
 
   def formatted_zones_info(species)

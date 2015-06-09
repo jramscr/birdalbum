@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :contact_types
   resources :contacts
   resources :common_names
-  resources :people
   resources :pictures
   resources :user_types
   resources :birds
@@ -23,7 +22,9 @@ Rails.application.routes.draw do
   resources :families
   resources :sub_orders
   resources :orders
-  resources :users
+  resources :users do
+    resources :people
+  end
   root 'birds#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

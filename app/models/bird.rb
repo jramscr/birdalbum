@@ -11,6 +11,8 @@ class Bird < ActiveRecord::Base
   has_many :bird_by_users
   has_many :users, through: :bird_by_users
 
+  accepts_nested_attributes_for :pictures, reject_if: :all_blank, allow_destroy: true
+
   def self.to_csv
     CSV.generate do |csv|
       csv << column_names

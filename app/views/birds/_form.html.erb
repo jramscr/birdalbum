@@ -2,8 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :common_name, collection: CommonName.all.map(&:name) %>
-    <%= f.input :description %>
+    <%= f.input :species_id, label: "Especie", collection: Species.all.map { |sp| [sp.name, sp.id] } %>
+    <%= f.input :common_name_id, label: "Nombre Común", collection: CommonName.all.map { |cn| [cn.name, cn.id] } %>
+    <%= f.input :description, label: "Descripción" %>
+    <h3> Agregar Fotos del Ave</h3>
+  </div>
+  <div id="picture">
+    <%= f.simple_fields_for :pictures do |pictures| %>
+      <%= render 'picture_fields', f: pictures %>
+    <% end %>
+    <div class="nested-link">
+      <%= link_to_add_association 'Agregar Fotografía', f, :pictures, data: { action: "#{action_name}" } %>
+    </div>
   </div>
 
   <div class="form-actions">

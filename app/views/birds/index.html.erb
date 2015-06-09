@@ -14,7 +14,7 @@
       </div>
 
       <div class="columns large-2">
-        <td><%= bird.common_name %></td>
+        <td><%= CommonName.find(bird.common_name_id).name %></td>
       </div>
 
       <div class="columns large-7">
