@@ -5,19 +5,42 @@
   <p>Lista de Aves</p>
 </div>
 
+<div class="row">
+  <div class="columns small-4">
+    <div class="row uncollapsed">
+      <span class="prefix button success">Filtrar</span>
+    </div>
+  </div>
+  <div class="columns small-8">
+    <div class="row uncollapsed">
+      <input id="searchbox" type="text"></input>
+    </div>
+  </div>
+</div>
+
 <% @birds.each do |bird| %>
   <%= link_to bird_path(bird) do %>
-    <div class="row panel callout">
+    <div class="row panel callout collaborator-datarow">
 
       <div class="columns large-3">
         <td><%= image_tag('https://s-media-cache-ak0.pinimg.com/236x/46/88/65/46886577309967ec698ffe37fb800b78.jpg') %></td>
       </div>
 
-      <div class="columns large-2">
-        <td><%= CommonName.find(bird.common_name_id).name %></td>
+      <div class="columns large-6 collaborator-fullname">
+        <div class="columns large-5">
+          <td><strong>Nombre Común:</strong><%= common_name(bird).name %></td><br/>
+          <td><strong>Género:</strong><%= gender(bird).name %></td><br/>
+          <td><strong>Especie:</strong><%= species(bird).name %></td><br/>
+        </div>
+        <div class="columns large-7">
+          <td><strong>Tipo de Pico:</strong><%= beak(bird).name %></td><br/>
+          <td><strong>Tamaño:</strong><%= size(bird).description %></td><br/>
+          <td><strong>Cantidad de Huevos:</strong><%= egg(bird).description %></td><br/>
+        </div>
+
       </div>
 
-      <div class="columns large-7">
+      <div class="columns large-3">
         <td><%= bird.description %></td>
       </div>
     </div>
