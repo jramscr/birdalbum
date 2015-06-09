@@ -1,5 +1,5 @@
 class CommonName < ActiveRecord::Base
-  belongs_to :bird
+  belongs_to :species
 
   def self.to_csv
     CSV.generate do |csv|

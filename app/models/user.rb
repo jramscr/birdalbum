@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :bird_by_users
   has_many :birds, through: :bird_by_users
 
+  accepts_nested_attributes_for :person, reject_if: :all_blank, allow_destroy: true
+
   def admin?
     return false unless formatted_user_type(self) == "Administrador"
     return true

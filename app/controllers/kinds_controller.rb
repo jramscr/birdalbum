@@ -67,7 +67,7 @@ class KindsController < ApplicationController
   end
 
   def import
-    Kind.import(params[:file])
+    Kind.import params[:file].read
     redirect_to kinds_path, notice: "Clases importados."
   end
 

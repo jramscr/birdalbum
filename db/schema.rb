@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20150608072437) do
     t.string   "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "kind_id"
+    t.integer  "species_id"
     t.integer  "common_name_id"
   end
 
   add_index "birds", ["common_name_id"], name: "index_birds_on_common_name_id", using: :btree
-  add_index "birds", ["kind_id"], name: "index_birds_on_kind_id", using: :btree
+  add_index "birds", ["species_id"], name: "index_birds_on_species_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"

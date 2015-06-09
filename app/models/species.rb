@@ -7,6 +7,8 @@ class Species < ActiveRecord::Base
   has_many :species_colors
   has_many :colors, through: :species_colors
 
+  has_many :birds
+
   accepts_nested_attributes_for :zones, reject_if: :all_blank, allow_destroy: true
 
   def self.to_csv

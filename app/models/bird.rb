@@ -1,7 +1,7 @@
 class Bird < ActiveRecord::Base
   paginates_per 5
 
-  belongs_to :kind
+  belongs_to :species
 
   has_one :common_name
 
