@@ -18,7 +18,7 @@ module SpeciesHelper
 
   def formatted_eggs_quantity(species)
     if species.quantity_egg_id.nil?
-      "No hay una cantidad de huevos definida"
+      "No hay una cantidad de huevos definida."
     else
       QuantityEgg.find(species.quantity_egg_id).description
     end
