@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :picture_by_users
   has_many :pictures, through: :picture_by_users
 
+  has_many :birds
+
   has_many :bird_by_users
   has_many :birds, through: :bird_by_users
 

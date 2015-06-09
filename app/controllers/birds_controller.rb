@@ -9,7 +9,7 @@ class BirdsController < ApplicationController
     if current_user.admin?
       redirect_to settings_dashboard_path
     else
-      @birds = Bird.all.page params[:page]
+      @birds = Bird.page params[:page]
     end
     #f.csv { render text: @birds.to_csv }
     #f.xls

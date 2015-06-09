@@ -1,19 +1,35 @@
 module SpeciesHelper
 
   def formatted_beak_type(species)
-    BeakType.find(species.beak_type_id).name
+    if species.beak_type.nil?
+      "No se encontro un tipo de pico"
+    else
+      BeakType.find(species.beak_type_id).name
+    end
   end
 
   def formatted_size(size)
-    "#{Size.find(size).description} apróximadamente."
+    if size.description.nil?
+      "No hay tamaño"
+    else
+      "#{Size.find(size).description} apróximadamente."
+    end
   end
 
   def formatted_eggs_quantity(species)
-    QuantityEgg.find(species.quantity_egg_id).description
+    if species.quantity_egg.nil?
+      "No hay una cantidad de huevos definida"
+    else
+      QuantityEgg.find(species.quantity_egg_id).description
+    end
   end
 
   def formatted_zone_name(zone)
-    zone.description
+    if zone.description.nil?
+      "No se informa la descripcion de la zona"
+    else
+      zone.description
+    end
   end
 
   def formatted_zones_info(species)

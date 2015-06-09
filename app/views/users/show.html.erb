@@ -10,14 +10,14 @@
 
   <div class="columns large-6">
     <h3>Nombre de Usuario: <p><%=  @user.username %></p></h3>
-    <h3>Correo: <p><%= @user.email %></p></h3>
+    <h3>Correo: <p><%= formatted_email(@user) %></p></h3>
     <h3>Tipo de Usuario: <p><%= formatted_user_type(@user) %></p></h3>
   </div>
 
   <div class="columns large-6">
-    <h3>Nombre: <p><%=  @user.person.name %></p></h3>
-    <h3>Apellido: <p><%= @user.person.lastname %></p></h3>
-    <h3>Cédula: <p><%= @user.person.identification %></p></h3>
+    <h3>Nombre: <p><%=  formatted_person_name(@user) %></p></h3>
+    <h3>Apellido: <p><%= formatted_person_lastname(@user) %></p></h3>
+    <h3>Cédula: <p><%= formatted_person_identifier(@user) %></p></h3>
   </div>
 
 </div>
