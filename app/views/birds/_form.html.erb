@@ -2,6 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
     <%= f.input :species_id, label: "Especie", collection: Species.all.map { |sp| [sp.name, sp.id] } %>
     <%= f.input :common_name_id, label: "Nombre Común", collection: CommonName.all.map { |cn| [cn.name, cn.id] } %>
     <%= f.input :description, label: "Descripción" %>

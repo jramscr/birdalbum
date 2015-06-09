@@ -77,6 +77,6 @@ class BirdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bird_params
-      params.require(:bird).permit(:common_name_id, :description, :species_id, picture_fields: [:id, :url, :name, :_destroy] )
+      params.require(:bird).permit(:user_id, :common_name_id, :description, :species_id, picture_fields: [:id, :url, :name, :_destroy] )
     end
 end

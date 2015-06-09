@@ -15,6 +15,7 @@ class Bird < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, reject_if: :all_blank, allow_destroy: true
 
   scope :incertae_sedis, -> { joins(:species).where(species: {name: "Incertae Sedis"}) }
+  scope :by_user, -> (user) { where(user_id: user.id) }
 
   def self.to_csv
     CSV.generate do |csv|
